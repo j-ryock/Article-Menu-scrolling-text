@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Menu</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 50px;
+            align-items: center;
+            font-family: arial;
+        }
+
+        .card {
+            display: flex;
+            gap: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 5px rgba(114, 114, 114, 0.1);
+            background-color: #012169;
+            color: white;
+            width: 879px;
+            height: 293px;
+            overflow: hidden;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            position: relative;
+        }
+
+        ul li a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            width: 100px;
+            height: 40px;
+            padding: 5px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        ul li .checkmark {
+            display: none;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #fff;
+            color: #012169;
+            font-size: 11px;
+            font-weight: bold;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        /* Make checkmark visible for the first list item */
+        ul li:first-child .checkmark {
+            display: block;
+        }
+
+        .active {
+            background: #8d6efd;
+        }
+
+        .text-block {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        #section-1 {
+            margin-top: 18px;
+        }
+
+        #section-2 {
+            margin-top: 374px;
+        }
+
+        #section-3 {
+            margin-top: 356px;
+        }
+
+        #section-4 {
+            margin-top: 711px;
+        }
+
+        #section-5 {
+            margin-top: 1069px;
+        }
+
+        .section-1-scroll {
+            transform: translateY(0px);
+        }
+
+        .section-2-scroll {
+            transform: translateY(-492px);
+        }
+
+        .section-3-scroll {
+            transform: translateY(-968px);
+        }
+
+        .section-4-scroll {
+            transform: translateY(-1796px);
+        }
+
+        .section-5-scroll {
+            transform: translateY(-2983px);
+        }
+
+        hr {
+            border: 1px solid #fff;
+            width: 100%;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <ul>
+            <li>
+                <a id="one" class="active">One</a>
+                <span class="checkmark">✓</span>
+            </li>
+            <li>
+                <a id="two">Two</a>
+                <span class="checkmark">✓</span>
+            </li>
+            <li>
+                <a id="three">Three</a>
+                <span class="checkmark">✓</span>
+            </li>
+            <li>
+                <a id="four">Four</a>
+                <span class="checkmark">✓</span>
+            </li>
+            <li>
+                <a id="five">Five</a>
+                <span class="checkmark">✓</span>
+            </li>
+        </ul>
+
+        <div id="text-block" class="text-block">
+            <!-- ********** ONE ********** -->
+            <hr id="section-1">
+            <p>
+                11111 ipsum dolor sit amet consecteur adipisicing elit. Explicabo
+                quae adipisci beatae nihil repellendus consequatur doloreque natus corporis facere aut veritatis,
+                similique sequi, magni optio. Nulla
+                quae nostrum laudantium enim?
+            </p>
+            <hr>
+
+            <!-- ********** TWO ********** -->
+            <hr id="section-2">
+            <p>
+                22222 ipsum dolor sit amet consectetur adipisicing elit. Explicabo
+                quae adipisci beatae nihil repellendus consequatur doloremque natus corporis facere aut veritatis,
+                similique sequi, magni optio. Nulla
+                quae nostrum laudantium enim?
+            </p>
+            <hr>
+
+            <!-- ********** THREE ********** -->
+            <hr id="section-3">
+            <p>
+                33333 ipsum dolor sit amet consectetur adipisicing elit. Explicabo
+                quae adipisci beatae nihil repellendus consequatur doloreque natus corporis facere aut veritatis,
+                similique sequi, magni optio. Nulla
+                quae nostrum laudantium enim?
+            </p>
+            <hr>
+            <!-- ********** FOUR ********** -->
+            <hr id="section-4">
+            <p>
+                44444 ipsum dolor sit amet consectetur adipisicing elit. Explicabo
+                quae adipisci beatae nihil repellendus consequatur doloreque natus corporis facere aut veritatis,
+                similique sequi, magni optio. Nulla
+                quae nostrum laudantium enim?
+            </p>
+            <hr>
+            <!-- ********** FIVE ********** -->
+            <hr id="section-5">
+            <p>
+                55555 ipsum dolor sit amet consectetur adipisicing elit. Explicabo
+                quae adipisci beatae nihil repellendus consequatur doloreque natus corporis facere aut veritatis,
+                similique sequi, magni optio. Nulla
+                quae nostrum laudantium enim?
+            </p>
+            <hr>
+        </div>
+    </div>
+
+    <div id="completionStatusDiv" style="font-size: 24pt; color: green;visibility: hidden;">PAGE COMPLETED!</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('ul li a');
+            const textBlock = document.querySelector('#text-block');
+            const clickedElements = new Set(); // Set to track clicked links
+
+            // Function to check if all links except the first are clicked
+            function checkCompletion() {
+                const completionStatusDiv = document.querySelector('#completionStatusDiv');
+
+                if (clickedElements.size === links.length - 1) {
+                    completionStatusDiv.style.visibility = 'visible';
+                }
+            }
+
+            links.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    links.forEach(link => {
+                        link.classList.remove('active');
+                    });
+
+                    this.classList.add('active');
+
+                    // Show the checkmark for the clicked link
+                    const checkmark = this.parentElement.querySelector('.checkmark');
+                    if (checkmark) {
+                        checkmark.style.display = 'block';
+                    }
+
+                    // Add clicked link to the set, except for the first one
+                    if (this.id !== 'one') {
+                        clickedElements.add(this.id); // Add link ID to set
+                        checkCompletion(); // Check if all links except the first are clicked
+                    }
+
+                    textBlock.classList.remove('section-1-scroll', 'section-2-scroll', 'section-3-scroll', 'section-4-scroll', 'section-5-scroll');
+
+                    if (this.id === 'one') {
+                        textBlock.classList.toggle('section-1-scroll');
+
+                    } else if (this.id === 'two') {
+                        textBlock.classList.toggle('section-2-scroll');
+
+                    } else if (this.id === 'three') {
+                        textBlock.classList.toggle('section-3-scroll');
+
+                    } else if (this.id === 'four') {
+                        textBlock.classList.toggle('section-4-scroll');
+
+                    } else if (this.id === 'five') {
+                        textBlock.classList.toggle('section-5-scroll');
+                    }
+                    event.preventDefault();
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
